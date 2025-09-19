@@ -49,7 +49,7 @@ export function Contact() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl lg:text-5xl mb-6 text-stone-900 font-serif">
+          <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-12 tracking-tight ">
             {`Let's Create Together`}
           </h2>
           <p className="text-lg text-stone-600 max-w-2xl mx-auto">
@@ -67,7 +67,7 @@ export function Contact() {
             viewport={{ once: true }}
           >
             <div className="bg-white rounded-2xl shadow-xl p-8">
-              <h3 className="text-2xl mb-6 text-stone-900 font-serif">
+              <h3 className="text-2xl mb-6 text-stone-900 ">
                 Schedule a Consultation
               </h3>
 
@@ -165,9 +165,7 @@ export function Contact() {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl mb-6 text-stone-900 font-serif">
-                Get in Touch
-              </h3>
+              <h3 className="text-2xl mb-6 text-stone-900 ">Get in Touch</h3>
               <p className="text-stone-600 mb-8 leading-relaxed">
                 {`We'd love to hear about your project. Whether you're looking for
                 a complete home transformation or need expert advice on a
@@ -232,9 +230,7 @@ export function Contact() {
 
             {/* Call to Action */}
             <div className="bg-amber-50 rounded-lg p-6 mt-8">
-              <h4 className="text-lg text-stone-900 mb-2 font-serif">
-                Prefer to Talk?
-              </h4>
+              <h4 className="text-lg text-stone-900 mb-2 ">Prefer to Talk?</h4>
               <p className="text-stone-600 mb-4">
                 Schedule a phone consultation to discuss your project in detail.
               </p>
