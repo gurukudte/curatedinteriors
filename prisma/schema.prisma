@@ -5,8 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider        = "prisma-client-js" // optional
-  engineType      = "binary"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -30,4 +29,14 @@ model User {
   role          Role      @default(USER)
   emailVerified DateTime? @map("email_verified")
   image         String?
+}
+
+model Lead {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  email       String
+  phone       String?
+  projectType String?
+  message     String?
+  createdAt   DateTime @default(now())
 }

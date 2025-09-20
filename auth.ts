@@ -1,10 +1,8 @@
 import NextAuth, { User as NextAuthUser } from "next-auth";
 import authConfig from "./auth.config";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-
-import { getUserById } from "./data/user";
 import { db } from "./lib/db";
-
+import { getUserById } from "./data/user";
 enum Role {
   SUPERADMIN = "SUPERADMIN",
   ADMIN = "ADMIN",

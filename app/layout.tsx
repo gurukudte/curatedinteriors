@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "Curated Interiors - Luxury Interior Design Services",
@@ -24,7 +25,9 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

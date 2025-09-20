@@ -7,6 +7,8 @@ import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
+import { ContactSchema } from "@/schemas";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -17,19 +19,48 @@ export function Contact() {
     projectType: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-      projectType: ""
-    });
+
+    // ✅ Client-side validation with Zod
+    const validation = ContactSchema.safeParse(formData);
+
+    if (!validation.success) {
+      validation.error.errors.forEach((err) => {
+        toast.error(err.message);
+      });
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(validation.data), // use validated data
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      const data = await res.json();
+      console.log("Form submitted successfully:", data);
+
+      toast.success("Your consultation request has been submitted!");
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+        projectType: "",
+      });
+    } catch (err) {
+      console.error(err);
+      toast.error("Something went wrong. Please try again.");
+    }
   };
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -109,7 +140,7 @@ export function Contact() {
                       type="tel"
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder="(555) 123-4567"
+                      placeholder="9876543210"
                       className="bg-stone-50 border-stone-200 focus:border-amber-600"
                     />
                   </div>
