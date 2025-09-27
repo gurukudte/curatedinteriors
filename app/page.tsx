@@ -17,10 +17,10 @@ export default function App() {
         <section id="home">
           <Hero />
         </section>
-        <TrustFeatures/>
         <section id="services">
           <Services />
         </section>
+        <TrustFeatures/>
         {/* <section id="about">
           <About />
         </section> */}

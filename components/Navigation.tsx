@@ -1,30 +1,26 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-import Image from "next/image";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 export function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { label: "Home", href: "#home" },
-    // { label: "About", href: "#about" },
-    { label: "Portfolio", href: "#portfolio" },
-    { label: "Services", href: "#services" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "Contact", href: "#contact" },
+    { label: "Who we are", href: "#who" },
+    { label: "The challenge", href: "#challenge" },
+    { label: "Our process", href: "#process" },
+    { label: "Why choose us", href: "#why" },
   ];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -35,109 +31,88 @@ export function Navigation() {
   };
 
   return (
-    <>
-      {/* Navbar */}
-      <motion.nav
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-xl"
-            : "bg-transparent"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <div className="flex items-center space-x-3">
-              <Image
-                src="/company-logo-removebg-preview.png"
-                alt="Interior Design"
-                width={70}
-                height={70}
-                priority
-                className="object-contain"
-              />
-              <h1
-                className={`text-2xl font-semibold tracking-wide transition-colors duration-300 ${
-                  isScrolled ? "text-stone-900" : "text-white"
-                }`}
-              >
-                Curated Interiors
-              </h1>
-            </div>
-
-            {/* Desktop Menu */}
-            <div className="hidden lg:flex items-center space-x-10">
-              {navItems.map((item) => (
-                <button
-                  key={item.label}
-                  onClick={() => scrollToSection(item.href)}
-                  className={`relative font-light tracking-wide transition-all duration-300 ${
-                    isScrolled ? "text-stone-700" : "text-white/90"
-                  } after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1.5px] after:bg-[#D4AF37] after:transition-all after:duration-300 hover:after:w-full`}
-                >
-                  {item.label}
-                </button>
-              ))}
-              <button
-                onClick={() => scrollToSection("#contact")}
-                className="bg-amber-600 text-white px-6 py-2 rounded-full hover:bg-amber-400 shadow-md hover:shadow-lg transition-all duration-300 font-medium"
-              >
-                Get Started
-              </button>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`lg:hidden transition-colors duration-300 ${
-                isScrolled ? "text-stone-900" : "text-white"
-              }`}
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
-          </div>
+    <motion.nav
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-6xl"
+    >
+      <div className="bg-white rounded-full shadow-lg px-6 py-3 flex items-center justify-between">
+        {/* Logo */}
+        <div className="flex items-center space-x-2">
+          <img
+            src="/logo.svg"
+            alt="Logo"
+            className="h-8 w-auto object-contain"
+          />
+          <h1 className="text-xl font-semibold text-primary">
+            Curated <span className="text-accent">I</span>nteriors
+          </h1>
         </div>
-      </motion.nav>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed top-20 left-0 right-0 z-40 bg-white/95 backdrop-blur-md shadow-lg lg:hidden"
+        {/* Desktop Menu */}
+        <div className="hidden lg:flex items-center space-x-8">
+          {navItems.map((item) => (
+            <button
+              key={item.label}
+              onClick={() => scrollToSection(item.href)}
+              className="text-secondary-foreground hover:text-primary transition-colors text-sm font-medium"
+            >
+              {item.label}
+            </button>
+          ))}
+
+          <Button
+            onClick={() => scrollToSection("#contact")}
+            className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 px-5 py-2 text-sm font-medium shadow-md"
           >
-            <div className="px-6 py-6 space-y-6 divide-y divide-stone-200/60">
-              {navItems.map((item) => (
-                <button
-                  key={item.label}
-                  onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left py-2 text-stone-800 hover:text-[#D4AF37] transition-colors duration-300"
-                >
-                  {item.label}
-                </button>
-              ))}
-              <div className="pt-4">
-                <button
+            Contact us
+          </Button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className="lg:hidden">
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-secondary-foreground hover:text-primary"
+                aria-label="Toggle menu"
+              >
+                <Menu className="w-6 h-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent
+              side="top"
+              className="bg-white text-secondary-foreground"
+            >
+              <SheetHeader>
+                <SheetTitle className="text-primary">Menu</SheetTitle>
+              </SheetHeader>
+              <div className="flex flex-col mt-6 space-y-6">
+                {navItems.map((item) => (
+                  <Button
+                    key={item.label}
+                    variant="ghost"
+                    onClick={() => scrollToSection(item.href)}
+                    className="justify-start text-lg text-secondary-foreground hover:text-primary"
+                  >
+                    {item.label}
+                  </Button>
+                ))}
+                <Button
+                  size="lg"
                   onClick={() => scrollToSection("#contact")}
-                  className="w-full bg-[#D4AF37] text-black px-6 py-3 rounded-full hover:bg-[#c09a2e] transition-colors duration-300 shadow-md"
+                  className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-md"
                 >
-                  Get Started
-                </button>
+                  Contact us
+                </Button>
               </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </div>
+    </motion.nav>
   );
 }

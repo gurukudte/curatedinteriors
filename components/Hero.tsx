@@ -1,75 +1,76 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
 
 const images = [
-  "/living-area.png",
-  "/bedroom.png",
-  "/kitchen.png",
+  "/premium home interior design photos with boosted resolution.jpg",
+  "/premium home interior design photos with half left side wall.jpg",
+  "/premium home interior design.jpg",
 ];
 
+
 export function Hero() {
-  const [index, setIndex] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % images.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+   const [index, setIndex] = useState(0);
 
+   useEffect(() => {
+     const interval = setInterval(() => {
+       setIndex((prev) => (prev + 1) % images.length);
+     }, 5000);
+     return () => clearInterval(interval);
+   }, []);
   return (
-    <section className="relative w-full h-screen overflow-hidden">
-      {/* Carousel */}
+    <section className="relative m-12 h-[90vh] overflow-hidden rounded-3xl">
+      {/* Background Image */}
       <div className="absolute inset-0">
-        <AnimatePresence>
-          <motion.div
-            key={index}
-            className="absolute inset-0"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-          >
-            <Image
-              src={images[index]}
-              alt="Interior Design"
-              fill
-              priority
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
-          </motion.div>
-        </AnimatePresence>
+        <Image
+          src={images[index]}// replace with your image
+          alt="Furnishing Interior"
+          fill
+          priority
+          className="object-cover"
+        />
+        {/* <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" /> */}
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex items-center h-full px-6 md:px-16">
-        <div className="max-w-2xl text-left text-white">
+      <div className="relative z-10 flex items-center h-full px-6 md:px-20">
+        <div className="max-w-3xl text-left text-white">
           <motion.h1
-            className="text-4xl md:text-6xl font-bold tracking-wide leading-snug"
+            className="text-4xl md:text-6xl font-semibold leading-snug mb-60"
             initial={{ y: 40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            Carefully Chosen &{" "}
-            <span className="text-amber-600 w-full">Thoughtfully Organized</span>
+            <img
+              src="/logo.svg"
+              alt="Logo"
+              className="h-30 w-auto object-contain"
+            />
+          </motion.h1>
+          <motion.h1
+            className="text-4xl md:text-6xl font-semibold leading-snug"
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <span className="text-accent">Carefully</span>{" "}
+            <span className="text-primary">Chosen &</span> <br />
+            <span className="text-accent">Thoughtfully </span>
+            <span className="text-primary">Organized</span>
           </motion.h1>
 
           <motion.p
-            className="mt-6 text-lg md:text-2xl font-light text-gray-200"
+            className="mt-6 text-base md:text-lg font-light text-gray-200 max-w-lg"
             initial={{ y: 40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
           >
-            Transforming Indian homes into{" "}
-            <span className="text-amber-600 font-medium">
-              luxurious sanctuaries
-            </span>{" "}
-            — blending timeless tradition, modern elegance, and cultural warmth.
+            Transforming Indian homes into luxurious sanctuaries — blending
+            timeless tradition, modern elegance, and cultural warmth.
           </motion.p>
 
           <motion.div
@@ -78,8 +79,11 @@ export function Hero() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.6 }}
           >
-            <Button className="px-8 py-3 rounded-full text-lg font-medium bg-amber-600 text-black hover:bg-[#c09a2e] shadow-xl transition">
-              Explore Our Designs
+            <Button
+              size="lg"
+              className="rounded-sm px-8 py-3 text-base md:text-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 shadow-md"
+            >
+              Start Your Furnishing Journey
             </Button>
           </motion.div>
         </div>

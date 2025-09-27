@@ -39,7 +39,7 @@ const services = [
 
 export function Services() {
   return (
-    <section className="bg-gradient-to-b from-stone-50 via-white to-stone-100 mb-4">
+    <section className="my-8 bg-gradient-to-b from-stone-50 via-white to-stone-100">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
