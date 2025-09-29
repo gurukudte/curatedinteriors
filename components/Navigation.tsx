@@ -66,16 +66,16 @@ export function Navigation() {
             </button>
           ))}
 
-            <Button
+          <Button
             onClick={() => {
               scrollToSection("#contact");
               // Example interaction: log event or trigger analytics
               console.log("Contact us button clicked");
             }}
             className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 px-5 py-2 text-sm font-medium shadow-md cursor-pointer"
-            >
+          >
             Contact us
-            </Button>
+          </Button>
         </div>
 
         {/* Mobile Menu */}
@@ -93,7 +93,7 @@ export function Navigation() {
             </SheetTrigger>
             <SheetContent
               side="top"
-              className="bg-white text-secondary-foreground"
+              className="p-6 bg-white text-secondary-foreground"
             >
               <SheetHeader>
                 <SheetTitle className="text-primary">Menu</SheetTitle>
@@ -104,15 +104,15 @@ export function Navigation() {
                     key={item.label}
                     variant="ghost"
                     onClick={() => scrollToSection(item.href)}
-                    className="justify-start text-lg text-secondary-foreground hover:text-primary"
+                    className="justify-start text-lg text-secondary-foreground hover:text-primary cursor pointer"
                   >
-                    {item.label}
-                  </Button>
+                    {item.label}  
+                  </Button> 
                 ))}
                 <Button
                   size="lg"
                   onClick={() => scrollToSection("#contact")}
-                  className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-md"
+                  className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90 px-5 py-2 text-sm font-medium shadow-md cursor-pointer"
                 >
                   Contact us
                 </Button>

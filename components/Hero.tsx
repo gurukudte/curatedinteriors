@@ -106,7 +106,7 @@ export function Hero() {
           >
             <div className="relative group">
               <Image
-                src="/logo.svg"
+                src="/logo-white.svg"
                 alt="Curated Interiors Logo"
                 width={120}
                 height={120}
@@ -213,7 +213,7 @@ export function Hero() {
                 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => scrollToSection("#contact")}
-                className="group rounded-full bg-primary text-primary-foreground hover:bg-primary/90 px-10 py-4 text-lg font-semibold tracking-wide shadow-md flex items-center justify-center gap-3 focus:outline-none focus:ring-4 focus:ring-primary/40 active:scale-95 transition-all duration-300 cursor-pointer"
+                className="group rounded-full bg-primary text-primary-foreground hover:bg-primary/90 px-10 py-4 text-md font-semibold tracking-wide shadow-md flex items-center justify-center gap-3 focus:outline-none focus:ring-4 focus:ring-primary/40 active:scale-95 transition-all duration-300 cursor-pointer"
                 tabIndex={0}
                 aria-label="Start Your Journey"
                 onKeyDown={(e) => {
