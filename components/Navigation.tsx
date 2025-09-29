@@ -11,15 +11,16 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import Image from "next/image";
 
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
     { label: "Who we are", href: "#who" },
-    { label: "The challenge", href: "#challenge" },
-    { label: "Our process", href: "#process" },
-    { label: "Why choose us", href: "#why" },
+    { label: "Services", href: "#services" },
+    { label: "Projects", href: "#portfolio" },
+    { label: "Testimonials", href: "#testimonials" }
   ];
 
   const scrollToSection = (href: string) => {
@@ -40,12 +41,15 @@ export function Navigation() {
       <div className="bg-white rounded-full shadow-lg px-6 py-3 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-2">
-          <img
+          <Image
             src="/logo.svg"
             alt="Logo"
+            width={32}
+            height={32}
             className="h-8 w-auto object-contain"
+            priority
           />
-          <h1 className="text-xl font-semibold text-primary">
+          <h1 className="text-xl font-semibold text-foreground">
             Curated <span className="text-accent">I</span>nteriors
           </h1>
         </div>
@@ -62,12 +66,16 @@ export function Navigation() {
             </button>
           ))}
 
-          <Button
-            onClick={() => scrollToSection("#contact")}
-            className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 px-5 py-2 text-sm font-medium shadow-md"
-          >
+            <Button
+            onClick={() => {
+              scrollToSection("#contact");
+              // Example interaction: log event or trigger analytics
+              console.log("Contact us button clicked");
+            }}
+            className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 px-5 py-2 text-sm font-medium shadow-md cursor-pointer"
+            >
             Contact us
-          </Button>
+            </Button>
         </div>
 
         {/* Mobile Menu */}
