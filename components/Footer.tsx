@@ -16,7 +16,7 @@ import { motion } from "framer-motion";
 
 export function Footer() {
   const socialLinks = [
-    { Icon: Youtube, label: "Youtube", href: "#" },
+    { Icon: Youtube, label: "Youtube", href: "https://www.youtube.com/@CuratedInteriors2025" },
     { Icon: Instagram, label: "Instagram", href: "#" },
     { Icon: Facebook, label: "Facebook", href: "#" },
     { Icon: Twitter, label: "Twitter", href: "#" },

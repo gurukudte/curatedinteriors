@@ -12,6 +12,7 @@ enum Role {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
+    console.log(body)
     const validatedFields = SignupSchema.safeParse(body);
 
     if (!validatedFields.success) {
@@ -31,7 +32,7 @@ export async function POST(req: Request) {
 
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
-
+    console.log("Hashed Password:", hashedPassword);
     // Create user
     const newUser = await db.user.create({
       data: {
