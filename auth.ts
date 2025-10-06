@@ -40,7 +40,7 @@ export const {
         console.log("User found, allowing sign-in:", existingUser.email);
         return true; // Allow existing users to sign in
       }
-
+      console.log(user)
       try {
         // Create a new user only if they don't exist
         await db.user.create({
@@ -59,7 +59,6 @@ export const {
 
       return true;
     },
-
     async session({ token, session }) {
       if (token.sub && session.user) {
         session.user.id = token.sub;

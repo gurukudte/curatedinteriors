@@ -318,7 +318,7 @@ export function Contact() {
                         type="tel"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="9876543210"
+                        placeholder=""
                         className="bg-stone-50 border-stone-200 focus:border-amber-600 rounded-xl py-3 transition-all duration-300"
                         style={{
                           borderColor: "#e6e1da",

@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { signup } from "@/lib/actions/auth";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -32,7 +31,12 @@ export default function SignupForm() {
 
   async function onSubmit(values: z.infer<typeof signupSchema>) {
     try {
-      const result = await signup(values);
+      const res = await fetch("/api/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+      const result = await res.json();
       if (result?.error) {
         // toast.error(result.error);
       } else {
@@ -100,7 +104,7 @@ export default function SignupForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full text-background">
+        <Button type="submit" className="w-full  text-white">
           Create account
         </Button>
       </form>
