@@ -64,8 +64,8 @@ export function Hero() {
 
   return (
     <section
-      className="relative mt-12 mx-6 md:mx-12 h-[90vh] overflow-hidden rounded-3xl group"
-      style={{ boxShadow: "0 30px 120px rgba(111, 91, 62, 0.4)" }}
+      className="relative mt-24 md:mt-28 mx-4 sm:mx-6 md:mx-12 min-h-[80vh] md:h-[85vh] overflow-hidden rounded-3xl group"
+      style={{ boxShadow: "0 30px 120px rgba(111, 91, 62, 0.35)" }}
     >
       {/* Background Images with Enhanced Effects */}
       <AnimatePresence mode="popLayout">
@@ -89,45 +89,14 @@ export function Hero() {
           />
 
           {/* Sophisticated Gradient Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/15" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50" />
         </motion.div>
       </AnimatePresence>
 
       {/* Main Content Layout */}
-      <div className="relative z-20 h-full flex flex-col">
-        {/* Top Bar with Logo Only */}
-        <div className="flex justify-start items-start p-8 md:p-12">
-          {/* Logo Section */}
-          <motion.div
-            initial={{ y: -30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-          >
-            <div className="relative group">
-              <Image
-                src="/logo-white.svg"
-                alt="Curated Interiors Logo"
-                width={120}
-                height={120}
-                className="h-16 md:h-20 w-auto object-contain filter drop-shadow-2xl transition-transform duration-300 group-hover:scale-105"
-                priority
-              />
-              {/* Logo glow effect */}
-              <div
-                className="absolute inset-0 blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"
-                style={{
-                  background:
-                    "radial-gradient(circle, #bfa14a 0%, transparent 70%)",
-                }}
-              ></div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Main Content Area */}
-        <div className="flex-1 flex items-center px-8 md:px-12">
-          <div className="max-w-2xl">
+      <div className="relative z-20 h-full flex flex-col justify-center px-8 md:px-16 py-12 md:py-16">
+        <div className="max-w-2xl">
             {/* Premium Badge */}
             <motion.div
               key={`badge-${currentSlide.id}`}
@@ -228,7 +197,6 @@ export function Hero() {
             </motion.div>
           </div>
         </div>
-      </div>
     </section>
   );
 }

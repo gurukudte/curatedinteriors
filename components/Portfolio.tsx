@@ -3,11 +3,27 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
-import {  Award } from "lucide-react";
+import { Award } from "lucide-react";
+import { PortfolioCarousel } from "./PortfolioCarousel";
+
+const villaImages = Array.from(
+  { length: 31 },
+  (_, i) => `/villa/villa-${String(i + 1).padStart(2, "0")}.webp`
+);
 
 const portfolioVideos = [
   {
     id: 1,
+    title: "Luxury Villa Interior Design",
+    customer: "Private Villa Residence",
+    category: "Residential",
+    images: villaImages,
+    description:
+      "A complete luxury villa transformation blending contemporary elegance with warm sophistication — featuring bespoke woodwork, ambient architectural lighting, and refined living spaces.",
+    type: "carousel",
+  },
+  {
+    id: 2,
     title: "Luxury Interiors",
     customer: "Mr. & Mrs. Iyer",
     category: "Residential",
@@ -17,7 +33,7 @@ const portfolioVideos = [
     type: "reel",
   },
   {
-    id: 2,
+    id: 3,
     title: "Luxury 1BHK Apartment Transformation",
     customer: "Mr.Potdar & Family",
     category: "Residential",
@@ -27,7 +43,7 @@ const portfolioVideos = [
     type: "wide",
   },
   {
-    id: 3,
+    id: 4,
     title: "Modern 1BHK Interior",
     customer: "Mrs.Snehal & Mr. Nilesh Mhatre",
     category: "Residential",
@@ -37,7 +53,7 @@ const portfolioVideos = [
     type: "wide",
   },
   {
-    id: 4,
+    id: 5,
     title: "Luxury 3BHK Apartment Transformation",
     customer: "Mr.Pande & Family",
     category: "Residential",
@@ -47,7 +63,27 @@ const portfolioVideos = [
     type: "wide",
   },
   {
-    id: 5,
+    id: 6,
+    title: "Luxury Residential Interior",
+    customer: "Mrs. Rajeshwari & Mr. Mayank",
+    category: "Residential",
+    videoId: "WCnGCtXtlKs",
+    description:
+      "A beautifully crafted residential interior blending warmth and elegance, tailored to the unique taste of the homeowners.",
+    type: "reel",
+  },
+  {
+    id: 7,
+    title: "Premium Home Interior",
+    customer: "Mr. & Mrs. Bare",
+    category: "Residential",
+    videoId: "FJAJPiKnkDQ",
+    description:
+      "A refined home transformation showcasing thoughtful design choices, premium materials, and a timeless aesthetic.",
+    type: "reel",
+  },
+  {
+    id: 8,
     title: "Executive Office Interior",
     customer: "TechBadger info Solutions",
     category: "Office",
@@ -121,7 +157,7 @@ export function Portfolio() {
               }}
             >
               <Award className="w-4 h-4 inline-block mr-2" />
-              <span className="relative z-10">Showcased Excellence</span>
+              <span className="relative z-10">Signature Projects</span>
             </span>
           </div>
 
@@ -246,7 +282,13 @@ export function Portfolio() {
 
                   {/* Media Container */}
                   <div className="relative">
-                    {item.videoId ? (
+                    {item.images && item.images.length > 0 ? (
+                      <PortfolioCarousel
+                        images={item.images}
+                        title={item.title}
+                        customer={item.customer}
+                      />
+                    ) : item.videoId ? (
                       <div className="relative h-70 lg:h-86 overflow-hidden bg-black rounded-t-3xl">
                         <iframe
                           src={`https://www.youtube.com/embed/${item.videoId}?rel=0&modestbranding=1&controls=1`}

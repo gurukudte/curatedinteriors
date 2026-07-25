@@ -7,7 +7,7 @@ export function Testimonials() {
   const testimonials = [
     {
       name: "Mr. Sai Prasad Poddar",
-      review: `"That was delicate. I was always in need of subtleness around my home, but within my budget — We achieved that by having Curated Interiors as our interior designers."`,
+      review: `"I'm a software engineer and I had very clear expectations for my first home - limited colours, no loud designs, just a warm and cozy feeling where the space speaks for itself. Rahul Sir understood this completely. He studied my requirements, created designs that matched my vision precisely, and guided me on every colour, material and finish. The result exceeded what I imagined. Every time I walk in, I feel instantly fresh and at ease. A truly excellent experience with Curated Interiors."`,
       stars: 5,
       videoId: "rk8Y2CCw92s",
       type: "reel",
@@ -15,19 +15,35 @@ export function Testimonials() {
     },
     {
       name: "Nilesh Mhatre",
-      review: `"We compared many in the market. Curated Interiors offered very competitive prices, timeless designs, and exceptional material quality. Completed within 60 days as promised — every corner of our home became elegant and welcoming."`,
+      review: `"I have a 2.5 BHK flat in Tathavade and wanted the interior done right - focusing on space utilisation, designs, and every detail that matters. I had seen my friends' flats done by others, but when I met Rahul Sir, the approach was completely different. He guided me properly from start to finish, suggested ideas I hadn't thought of, and delivered a home that truly reflects quality. I am very happy with the outcome and would recommend Curated Interiors without hesitation."`,
       stars: 5,
       videoId: "xQBtJIy9htA",
       type: "reel",
-      project: "Modern 1BHK",
+      project: "Modern 2.5 BHK",
     },
     {
       name: "Sunil Pandey",
-      review: `"Curated Interiors transformed our house into a home that truly reflects our personality. Their team was attentive to every detail, and the design process was smooth and transparent. We loved how they balanced style with practicality, and the final result exceeded our expectations."`,
+      review: `"From the very first meeting, I could tell that Rahul Sir was different from any other interior designer we had spoken to. Once we finalised the project, the level of commitment he brought made us feel like family - not just clients. He attended to every tiny detail with the same care a family member would. Every discussion led to a new and better idea, and he honoured every commitment on time. Our home was delivered exactly as promised - beautifully, completely, and within the agreed timeline. We are deeply satisfied."`,
       stars: 5,
       videoId: "xXECHon4meI",
       type: "reel",
       project: "Family Home Makeover",
+    },
+    {
+      name: "Mrs. Pallavi Kakde",
+      review: `"After a disappointing experience with a large interior firm, I met Rahul Sir from Curated Interiors right in my building. The very first 3D design he presented was so spot-on that we finalized everything with just a couple of minor tweaks. I had set a two-month deadline - he delivered exactly on time, without a single complaint from my end. The execution was flawless from start to finish."`,
+      stars: 5,
+      videoId: "pllBhnu5WTk",
+      type: "reel",
+      project: "Apartment Interior",
+    },
+    {
+      name: "Mr. Sudershan & Mrs. Radha",
+      review: `"For our very first home, we wanted everything to be perfect. After consulting many designers, meeting Rahul felt completely different - genuinely interactive and two-way. Every piece of feedback was truly heard, and the team was incredibly flexible, even accommodating last-minute changes without hesitation. Curated Interiors delivered our dream home on time and proved exactly what they stand for. We would absolutely recommend them to everyone."`,
+      stars: 5,
+      videoId: "h76SejCIlME",
+      type: "reel",
+      project: "Dream Home Interior",
     },
   ];
 
@@ -132,9 +148,9 @@ export function Testimonials() {
           </motion.div>
         </div>
 
-        {/* Premium Testimonials Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 xl:gap-12 items-stretch">
-          {testimonials.map((testimonial, index) => (
+        {/* Premium Testimonials Grid – Row 1: first 3 */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 xl:gap-12 items-stretch mb-8 xl:mb-12">
+          {testimonials.slice(0, 3).map((testimonial, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 40, scale: 0.95 }}
@@ -250,7 +266,7 @@ export function Testimonials() {
 
                     {/* Review Text */}
                     <p
-                      className="h-44 text-md leading-relaxed mb-6 italic"
+                      className="min-h-[11rem] text-md leading-relaxed mb-6 italic"
                       style={{ color: "#6b6b6b" }}
                     >
                       {testimonial.review}
@@ -280,6 +296,126 @@ export function Testimonials() {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* Premium Testimonials Grid – Row 2: last 2, centred */}
+        <div className="flex justify-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-12 items-stretch w-full lg:max-w-4xl">
+            {testimonials.slice(3).map((testimonial, idx) => {
+              const index = idx + 3;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{
+                    duration: 0.8,
+                    delay: idx * 0.2,
+                    type: "spring",
+                    stiffness: 100,
+                  }}
+                  viewport={{ once: true }}
+                  className="group relative h-full"
+                >
+                  <div className="relative h-full">
+                    <div
+                      className="absolute inset-0 rounded-3xl transition-all duration-700 group-hover:scale-105"
+                      style={{
+                        background:
+                          "linear-gradient(145deg, #ffffff 0%, #f9f7f2 100%)",
+                        boxShadow: "0 15px 50px rgba(111, 91, 62, 0.1)",
+                      }}
+                    ></div>
+                    <div
+                      className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-all duration-500"
+                      style={{
+                        background:
+                          "linear-gradient(145deg, rgba(191, 161, 74, 0.05) 0%, rgba(255, 140, 26, 0.08) 100%)",
+                        boxShadow: "0 25px 80px rgba(111, 91, 62, 0.2)",
+                      }}
+                    ></div>
+                    <div className="relative overflow-hidden rounded-3xl">
+                      <div className="relative">
+                        <div
+                          className={`relative bg-black overflow-hidden rounded-t-3xl h-70 lg:h-[300px]`}
+                        >
+                          <iframe
+                            src={`https://www.youtube.com/embed/${testimonial.videoId}?rel=0&modestbranding=1&controls=1&playsinline=1`}
+                            title="YouTube video player"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            className={`w-full h-full ${
+                              testimonial.type === "reel"
+                                ? "object-contain bg-black"
+                                : "object-cover"
+                            }`}
+                          />
+                        </div>
+                        <div className="absolute top-6 left-6 z-10">
+                          <span
+                            className="px-4 py-2 rounded-full text-xs font-semibold tracking-wide uppercase"
+                            style={{
+                              background: "rgba(255, 255, 255, 0.95)",
+                              color: "#6f5b3e",
+                              backdropFilter: "blur(10px)",
+                              boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
+                            }}
+                          >
+                            {testimonial.project}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="p-8">
+                        <div className="mb-6">
+                          <div
+                            className="w-8 h-8 rounded-2xl flex items-center justify-center"
+                            style={{
+                              background:
+                                "linear-gradient(135deg, #bfa14a 0%, #FF8C1A 100%)",
+                            }}
+                          >
+                            <Quote className="w-4 h-4 text-white" />
+                          </div>
+                        </div>
+                        <div className="flex mb-6 gap-1">
+                          {Array.from({ length: testimonial.stars }).map(
+                            (_, i) => (
+                              <Star
+                                key={i}
+                                className="w-4 h-4 transition-colors duration-300"
+                                style={{ color: "#bfa14a", fill: "#bfa14a" }}
+                              />
+                            )
+                          )}
+                        </div>
+                        <div
+                          className="border-t pt-6"
+                          style={{ borderColor: "#e6e1da" }}
+                        >
+                          <h3
+                            className="text-xl font-bold tracking-tight"
+                            style={{ color: "#6f5b3e" }}
+                          >
+                            {testimonial.name}
+                          </h3>
+                          <div
+                            className="mt-2 w-0 h-0.5 rounded-full group-hover:w-16 transition-all duration-500"
+                            style={{ backgroundColor: "#bfa14a" }}
+                          ></div>
+                        </div>
+                        <p
+                          className="min-h-[11rem] text-md leading-relaxed mb-6 italic"
+                          style={{ color: "#6b6b6b" }}
+                        >
+                          {testimonial.review}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Premium bottom section */}
