@@ -3,8 +3,14 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["images.unsplash.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
   },
+  turbopack: {}, // Suppress Turbopack error when using custom Webpack config
   experimental: {
     serverActions: {}, // ✅ fixed
   },
